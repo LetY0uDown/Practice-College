@@ -1,0 +1,62 @@
+﻿<Page x:Class="PracticeCollege.Views.StudentsList"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PracticeCollege.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="StudentsList">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="185"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="1">
+            <StackPanel>
+                <Label Content="Фамилии" HorizontalAlignment="Center"/>
+                <ComboBox ItemsSource="{Binding LastNameSource}"
+                          DisplayMemberPath="SurName"
+                          SelectedItem="{Binding SelectedLastName}"/>
+            </StackPanel>
+
+            <StackPanel>
+                <Label Content="Номер группы" HorizontalAlignment="Center"/>
+                <ComboBox ItemsSource="{Binding GroupNumSource}"
+                          DisplayMemberPath="GroupNumber" SelectedItem="{Binding SelectedGroupNum}"/>
+            </StackPanel>
+
+            <StackPanel>
+                <Label Content="Дата начала периода" HorizontalAlignment="Center"/>
+                <DatePicker SelectedDate="{Binding DateStartPeriod}"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="3">
+                <Label Content="Дата окончания периода" HorizontalAlignment="Center"/>
+                <DatePicker SelectedDate="{Binding DateEndPeriod}"/>
+            </StackPanel>
+        </StackPanel>
+        <Button Content="Добавить пропуск"  Grid.Column="0" VerticalAlignment="Bottom" Command="{Binding AddLeaving}" Height="30"/>
+
+        <ListBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding StudentsSource}" SelectedItem="{Binding SelectedStudent}" HorizontalContentAlignment="Stretch">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="150"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Text="{Binding SurName}"/>
+                        <TextBlock Grid.Column="1" Text="{Binding Leavings.Count}"/>
+                        <Button Grid.Column="3" Content="Настройки студента"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Page>
