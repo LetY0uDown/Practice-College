@@ -1,4 +1,7 @@
-﻿namespace PracticeCollege.Models
+﻿using System;
+using System.Collections.Generic;
+
+namespace PracticeCollege.Models
 {
     public partial class LessonTeacher
     {

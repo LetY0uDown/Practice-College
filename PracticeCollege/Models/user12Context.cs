@@ -52,8 +52,6 @@ namespace PracticeCollege.Models
 
             modelBuilder.Entity<Leaving>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
                 entity.Property(e => e.LeavingDate).HasColumnType("datetime");
 
                 entity.HasOne(d => d.Lesson)

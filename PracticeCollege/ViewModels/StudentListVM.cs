@@ -111,7 +111,7 @@ namespace PracticeCollege.ViewModels
                         student.Leavings = student.Leavings.Where(l => lessonTeacher.Any(lt =>
                                                                                          lt.LessonId == l.LessonId)).ToList();
 
-
+                        student.Leavings = student.Leavings.Where(l => l.LeavingDate > DateStartPeriod && l.LeavingDate < DateEndPeriod).ToList();
 
                         students.Add(student);
                     }

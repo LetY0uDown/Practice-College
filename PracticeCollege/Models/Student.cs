@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace PracticeCollege.Models
 {
@@ -6,7 +7,7 @@ namespace PracticeCollege.Models
     {
         public Student()
         {
-            Leavings = new List<Leaving>();
+            Leavings = new HashSet<Leaving>();
         }
 
         public int Id { get; set; }
@@ -16,6 +17,6 @@ namespace PracticeCollege.Models
         public int GroupId { get; set; }
 
         public virtual Group Group { get; set; } = null!;
-        public virtual List<Leaving> Leavings { get; set; }
+        public virtual ICollection<Leaving> Leavings { get; set; }
     }
 }

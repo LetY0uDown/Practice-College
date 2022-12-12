@@ -15,19 +15,30 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Margin="10">
-            <Button Content="⇦" Height="40" Width="40" Command="{Binding BackButton}"/>
+            <Button Content="⇦" FontSize="30"
+                    Height="40" Width="40" Command="{Binding BackButton}"/>
         </StackPanel>
-        <Button Content="🖬" Height="40" Width="40" VerticalAlignment="Bottom" Margin="10"/>
+        
+        <Button Content="🖬" Height="40" Width="40"
+                FontSize="30" Command="{Binding SaveCommand}"
+                VerticalAlignment="Bottom" Margin="10"/>
 
         <StackPanel Margin="70 10" Grid.ColumnSpan="2">
             <Label Content="Студент"/>
-            <ComboBox/>
+            <ComboBox ItemsSource="{Binding Students}"
+                      SelectedItem="{Binding SelectedStudent}"
+                      DisplayMemberPath="PatronomicName"/>
+
             <Label Content="Пара"/>
-            <ComboBox/>
+            <ComboBox ItemsSource="{Binding Lessons}"
+                      SelectedItem="{Binding SelectedLesson}"
+                      DisplayMemberPath="LessonName"/>
+
             <Label Content="Номер пары"/>
-            <TextBox/>
+            <TextBox Text="{Binding LessonNumber}"/>
+
             <Label Content="Дата пропуска"/>
-            <DatePicker/>
+            <DatePicker SelectedDate="{Binding LeavingDate}"/>
         </StackPanel>
     </Grid>
 </Page>
