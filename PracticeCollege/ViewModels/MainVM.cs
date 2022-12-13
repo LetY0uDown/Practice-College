@@ -23,8 +23,20 @@ namespace PracticeCollege.ViewModels
             }
         }
 
+        public ViewCommand ToStudentList { get; set; }
+        public ViewCommand TeachersList { get; set; }
+        public ViewCommand AddTeacher { get; set; }
+        public ViewCommand GroupList { get; set; }
+        public ViewCommand AddGroup { get; set; }
+
         public MainVM()
         {
+            TeachersList = new ViewCommand(() => CurrentPage = new TeachersList());
+            AddTeacher = new ViewCommand(() => CurrentPage = new AddTeacher());
+            GroupList = new ViewCommand(() => CurrentPage = new GroupList());
+            AddGroup = new ViewCommand(() => CurrentPage = new AddGroup());
+            ToStudentList = new ViewCommand(() => CurrentPage = new StudentsList(this));
+
             CurrentPage = new StudentsList(this);
         }
 

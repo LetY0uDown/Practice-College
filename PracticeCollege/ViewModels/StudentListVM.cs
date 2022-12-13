@@ -86,6 +86,7 @@ namespace PracticeCollege.ViewModels
         }
 
         public ViewCommand AddLeaving { get; set; }
+        public ViewCommand DeleteLeaving { get; set; }
 
         void StudentList()
         {
@@ -111,7 +112,7 @@ namespace PracticeCollege.ViewModels
                         student.Leavings = student.Leavings.Where(l => lessonTeacher.Any(lt =>
                                                                                          lt.LessonId == l.LessonId)).ToList();
 
-                        student.Leavings = student.Leavings.Where(l => l.LeavingDate > DateStartPeriod && l.LeavingDate < DateEndPeriod).ToList();
+
 
                         students.Add(student);
                     }
@@ -132,6 +133,10 @@ namespace PracticeCollege.ViewModels
             AddLeaving = new ViewCommand(() =>
             {
                 mainVM.CurrentPage = new AddLeaving(mainVM);
+            });
+            DeleteLeaving = new ViewCommand(() =>
+            {
+                mainVM.CurrentPage = new DeleteLeaving(SelectedLastName, SelectedGroupNum, DateStartPeriod, DateEndPeriod, SelectedStudent);
             });
         }
     }

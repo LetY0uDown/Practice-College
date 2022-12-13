@@ -16,44 +16,46 @@
 
         <StackPanel Grid.Row="1">
             <StackPanel>
-                <Label Content="Фамилии" HorizontalAlignment="Center"/>
+                <Label Content="Фамилии" HorizontalAlignment="Center" Foreground="White"/>
                 <ComboBox ItemsSource="{Binding LastNameSource}"
                           DisplayMemberPath="SurName"
                           SelectedItem="{Binding SelectedLastName}"/>
             </StackPanel>
 
             <StackPanel>
-                <Label Content="Номер группы" HorizontalAlignment="Center"/>
+                <Label Content="Номер группы" HorizontalAlignment="Center" Foreground="White"/>
                 <ComboBox ItemsSource="{Binding GroupNumSource}"
                           DisplayMemberPath="GroupNumber" SelectedItem="{Binding SelectedGroupNum}"/>
             </StackPanel>
 
             <StackPanel>
-                <Label Content="Дата начала периода" HorizontalAlignment="Center"/>
+                <Label Content="Дата начала периода" HorizontalAlignment="Center" Foreground="White"/>
                 <DatePicker SelectedDate="{Binding DateStartPeriod}"/>
             </StackPanel>
 
             <StackPanel Grid.Column="3">
-                <Label Content="Дата окончания периода" HorizontalAlignment="Center"/>
+                <Label Content="Дата окончания периода" HorizontalAlignment="Center" Foreground="White"/>
                 <DatePicker SelectedDate="{Binding DateEndPeriod}"/>
             </StackPanel>
         </StackPanel>
-        <Button Content="Добавить пропуск"  Grid.Column="0" VerticalAlignment="Bottom" Command="{Binding AddLeaving}" Height="30"/>
 
         <ListBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding StudentsSource}" SelectedItem="{Binding SelectedStudent}" HorizontalContentAlignment="Stretch">
+            <ListBox.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Добавить пропуск" Command="{Binding AddLeaving}"/>
+                    <MenuItem Header="Удалить пропуск" Command="{Binding DeleteLeaving}"/>
+                </ContextMenu>
+            </ListBox.ContextMenu>
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition Width="150"/>
                         </Grid.ColumnDefinitions>
 
                         <TextBlock Grid.Column="0" Text="{Binding SurName}"/>
                         <TextBlock Grid.Column="1" Text="{Binding Leavings.Count}"/>
-                        <Button Grid.Column="3" Content="Настройки студента"/>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>

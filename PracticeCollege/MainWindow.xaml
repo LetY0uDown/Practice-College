@@ -12,45 +12,25 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Menu Grid.Row="0" Grid.ColumnSpan="2">
+            <MenuItem Header="⌂" Command="{Binding ToStudentList}"/>
             <MenuItem Header="Настройки">
                 <MenuItem Header="Подключение к БД" x:Name="MenuOptions"/>
                 <MenuItem Header="Удаление записей о посещении" Name="MenuClearDB"/>
             </MenuItem>
             <MenuItem Header="Преподаватели">
-                <MenuItem Header="Добавить преподавателя в БД" x:Name="MenuAddProfessor"/>
-                <MenuItem Header="Редактировать преподавателя" x:Name="MenuEditProfessor"/>
+                <MenuItem Header="Список преподавателей" Command="{Binding TeachersList}"/>
+                <MenuItem Header="Добавить преподавателя" Command="{Binding AddTeacher}"/>
             </MenuItem>
             <MenuItem Header="Группы">
-                <MenuItem Header="Добавить группу в БД" x:Name="MenuAddGroup"/>
-                <MenuItem Header="Редактировать группу" x:Name="MenuEditGroup"/>
+                <MenuItem Header="Список групп" Command="{Binding GroupList}"/>
+                <MenuItem Header="Добавить группу" Command="{Binding AddGroup}"/>
             </MenuItem>
             <MenuItem Header="Ведомости">
                 <MenuItem Header="Ведомость за 1 день по отделению" x:Name="MenuReportDayDepartment"/>
                 <MenuItem Header="Сводная ведомость" x:Name="MenuReportDays"/>
             </MenuItem>
-            <MenuItem Header="Сортировка вывода">
-                <MenuItem Header="Сортировка по дате">
-                    <MenuItem Header="По возрастанию" Name="MenuSortDateAsc"/>
-                    <MenuItem Header="По убыванию"  Name="MenuSortDateDesc"/>
-                </MenuItem>
-                <MenuItem Header="Сортировка по преподавателю">
-                    <MenuItem Header="По возрастанию"  Name="MenuSortID_ProfessorAsc"/>
-                    <MenuItem Header="По убыванию"  Name="MenuSortID_ProfessorDesc"/>
-                </MenuItem>
-                <MenuItem Header="Сортировка по посещаемости">
-                    <MenuItem Header="По возрастанию" Name="MenuSortPercentAsc"/>
-                    <MenuItem Header="По убыванию" Name="MenuSortPercentDesc"/>
-                </MenuItem>
-                <MenuItem Header="Сортировка по количеству студентов">
-                    <MenuItem Header="По возрастанию" Name="MenuSortStudentWasAsc"/>
-                    <MenuItem Header="По убыванию" Name="MenuSortStudentWasDesc"/>
-                </MenuItem>
-            </MenuItem>
-            <MenuItem Header="Очистить фильтр" Name="MenuClearFilter"/>
-            <MenuItem Header="Рейтинги" Name="MenuRating"/>
-            <MenuItem Header="В базе данных n записей" Name="MenuNumRow" HorizontalAlignment="Right"/>
         </Menu>
-        
-        <Frame Grid.Row="1" Grid.ColumnSpan="2" Content="{Binding CurrentPage}" NavigationUIVisibility="Hidden"/>
+
+        <Frame Grid.Row="1" Grid.ColumnSpan="2" Content="{Binding CurrentPage}" NavigationUIVisibility="Hidden" Background="#FF1B1B1B"/>
     </Grid>
 </Window>
